@@ -8,9 +8,13 @@ public class BatteryDepletion : MonoBehaviour
 
     private Battery battery;
     private Image barImage;
+    [SerializeField] private bool flashLightSwitch;
+    [SerializeField] private GameObject flashlight;
 
     private void Awake()
     {
+        flashLightSwitch = false;
+        flashlight.SetActive(false);
         barImage = transform.Find("Bar").GetComponent<Image>();
 
         battery = new Battery();
@@ -20,6 +24,22 @@ public class BatteryDepletion : MonoBehaviour
     {
         battery.Update();
 
+        if (flashLightSwitch == false)
+        {
+            if (Input.GetMouseButtonDown(1))
+            {
+                flashlight.SetActive(true);
+                flashLightSwitch = true;
+            }
+        }
+        else if (flashLightSwitch == true)
+        {
+            if (Input.GetMouseButtonDown(1))
+            {
+                flashlight.SetActive(false);
+                flashLightSwitch = false;
+            }
+        }
         barImage.fillAmount = battery.GetNormalized();
     }
 }
@@ -29,7 +49,7 @@ public class Battery
     public const int ENERGY_MAX = 100;
 
     private float energyAmount = 100;
-    private float EnergyDepletion = 1f;
+    private float EnergyDepletion = 0.1f;
 
     public void Update()
     {
