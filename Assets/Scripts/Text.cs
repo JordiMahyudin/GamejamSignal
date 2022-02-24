@@ -32,9 +32,7 @@ public class Text : MonoBehaviour
     }
     public void EnableText()
     {
-        Debug.Log("Fuck");
         Text_2.gameObject.SetActive(true);
-        Debug.Log("Fuck");
         timeWhenDisappear = Time.time + timeToAppear;
     }
 
