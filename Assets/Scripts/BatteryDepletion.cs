@@ -64,6 +64,14 @@ public class BatteryDepletion : MonoBehaviour
                 SceneManager.LoadScene("EndScreen");
             }
         }
+        if (canCall == false)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                FindObjectOfType<AudioManager>().PlaySound("CallingEnd");
+            }
+        }
+            
         
     }
 

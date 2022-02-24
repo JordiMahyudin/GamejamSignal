@@ -884,7 +884,7 @@ GameObject:
   - component: {fileID: 1831161123}
   m_Layer: 0
   m_Name: Signal_1
-  m_TagString: Untagged
+  m_TagString: Signal_1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -929,5 +929,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13762051b0def484985a86bdacb0a758, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Signal_1: {fileID: 1831161122}
-  Signal_2: {fileID: 219719429}

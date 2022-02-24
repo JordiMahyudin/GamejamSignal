@@ -9,6 +9,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float mouseSensitivity = 5.0f;
     private float verticalRotation = 0;
     private float upDownRange = 90.0f;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip clip;
+    private float volume = 0.5f;
 
     private void Start()
     {
@@ -32,5 +35,10 @@ public class PlayerController : MonoBehaviour
 
         CharacterController cc = GetComponent<CharacterController>();
         cc.SimpleMove(speed);
+        if(Input.GetKeyDown(KeyCode.W))
+        {
+            FindObjectOfType<AudioManager>().PlaySound("PlayerWalk");
+        }
+        
     }
 }

@@ -4,16 +4,21 @@ using UnityEngine;
 
 public class SignalZones : MonoBehaviour
 {
-    [SerializeField] private Transform Signal_1;
-    [SerializeField] private Transform Signal_2;
-
-
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Signal reached");
-        //Do something
-
-        if(other.CompareTag("Player"))
+        if(other.CompareTag("Player") && this.CompareTag("Signal_1"))
+        {
+            Debug.Log("Signal reached");
+        }
+        if (other.CompareTag("Player") && this.CompareTag("Signal_2"))
+        {
+            Debug.Log("Signal reached");
+        }
+        if (other.CompareTag("Player") && this.CompareTag("Signal_3"))
+        {
+            Debug.Log("Signal reached");
+        }
+        if (other.CompareTag("Player") && this.CompareTag("Signal_4"))
         {
             Debug.Log("Signal reached");
         }
