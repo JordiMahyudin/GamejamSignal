@@ -57,17 +57,39 @@ public class BatteryDepletion : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Point"))
+        if (other.CompareTag("LowSignal"))
         {
             bar1.SetActive(true);
+            bar0.SetActive(false);
+        }
+        else if (other.CompareTag("MidSignal"))
+        {
+            bar2.SetActive(true);
+            bar0.SetActive(false);
+        }
+        else if (other.CompareTag("HighSignal"))
+        {
+            bar3.SetActive(true);
+            bar0.SetActive(false);
+        }
+        else if (other.CompareTag("HigherSignal"))
+        {
+            bar4.SetActive(true);
+            bar0.SetActive(false);
+        }
+        else if (other.CompareTag("MaxSignal"))
+        {
+            barcomplete.SetActive(true);
+            bar0.SetActive(false);
         }
 
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Point"))
+        if (other.CompareTag("LowSignal") || other.CompareTag("MidSignal") || other.CompareTag("HighSignal") || other.CompareTag("HigherSignal") || other.CompareTag("MaxSignal"))
         {
+            bar0.SetActive(true);
             barcomplete.SetActive(false);
             bar4.SetActive(false);
             bar3.SetActive(false);
