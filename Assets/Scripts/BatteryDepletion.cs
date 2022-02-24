@@ -10,12 +10,23 @@ public class BatteryDepletion : MonoBehaviour
     private Image barImage;
     [SerializeField] private bool flashLightSwitch;
     [SerializeField] private GameObject flashlight;
+    [SerializeField] private GameObject barcomplete;
+    [SerializeField] private GameObject bar4;
+    [SerializeField] private GameObject bar3;
+    [SerializeField] private GameObject bar2;
+    [SerializeField] private GameObject bar1;
+    [SerializeField] private GameObject bar0;
 
     private void Awake()
     {
         flashLightSwitch = false;
         flashlight.SetActive(false);
         barImage = transform.Find("Bar").GetComponent<Image>();
+        barcomplete.SetActive(false);
+        bar4.SetActive(false);
+        bar3.SetActive(false);
+        bar2.SetActive(false);
+        bar1.SetActive(false);
 
         battery = new Battery();
     }
@@ -40,7 +51,30 @@ public class BatteryDepletion : MonoBehaviour
                 flashLightSwitch = false;
             }
         }
+
         barImage.fillAmount = battery.GetNormalized();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Point"))
+        {
+            bar1.SetActive(true);
+        }
+
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Point"))
+        {
+            barcomplete.SetActive(false);
+            bar4.SetActive(false);
+            bar3.SetActive(false);
+            bar2.SetActive(false);
+            bar1.SetActive(false);
+
+        }
     }
 }
 
