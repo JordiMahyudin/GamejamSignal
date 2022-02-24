@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class BatteryDepletion : MonoBehaviour
 {
@@ -16,11 +17,13 @@ public class BatteryDepletion : MonoBehaviour
     [SerializeField] private GameObject bar2;
     [SerializeField] private GameObject bar1;
     [SerializeField] private GameObject bar0;
+    [SerializeField] private bool canCall;
 
     private void Awake()
     {
         flashLightSwitch = false;
         flashlight.SetActive(false);
+        canCall = false;
         barImage = transform.Find("Bar").GetComponent<Image>();
         barcomplete.SetActive(false);
         bar4.SetActive(false);
@@ -53,6 +56,15 @@ public class BatteryDepletion : MonoBehaviour
         }
 
         barImage.fillAmount = battery.GetNormalized();
+
+        if (canCall == true)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                SceneManager.LoadScene("EndScreen");
+            }
+        }
+        
     }
 
     private void OnTriggerEnter(Collider other)
@@ -81,6 +93,7 @@ public class BatteryDepletion : MonoBehaviour
         {
             barcomplete.SetActive(true);
             bar0.SetActive(false);
+            canCall = true;
         }
 
     }
@@ -110,6 +123,11 @@ public class Battery
     public void Update()
     {
         energyAmount -= EnergyDepletion * Time.deltaTime;
+
+        if (energyAmount <= 0)
+        {
+            SceneManager.LoadScene("DeathScreen");
+        }
     }
     
     public void Flashlight (int amount)
