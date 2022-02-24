@@ -96,6 +96,11 @@ public class BatteryDepletion : MonoBehaviour
             canCall = true;
         }
 
+        if (other.CompareTag("Monster"))
+        {
+            SceneManager.LoadScene("DeathScreen");
+        }
+
     }
 
     private void OnTriggerExit(Collider other)

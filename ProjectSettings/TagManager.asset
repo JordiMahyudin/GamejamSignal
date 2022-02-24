@@ -9,6 +9,7 @@ TagManager:
   - HighSignal
   - HigherSignal
   - MaxSignal
+  - Monster
   layers:
   - Default
   - TransparentFX

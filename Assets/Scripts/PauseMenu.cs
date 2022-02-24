@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     [SerializeField] private GameObject pauseMenu;
-    [SerializeField] private GameObject optionsMenu;
+
 
 
     private bool isPaused;
@@ -14,7 +14,7 @@ public class PauseMenu : MonoBehaviour
     private void Awake()
     {
         pauseMenu.SetActive(false);
-        optionsMenu.SetActive(false);
+
     }
 
     // Update is called once per frame
@@ -25,7 +25,6 @@ public class PauseMenu : MonoBehaviour
             //kijkt of pause aan staat zo niet zet de game hem op pause
             if (isPaused)
             {
-                optionsMenu.SetActive(false);
                 ResumeGame();
             }
             else
@@ -50,40 +49,8 @@ public class PauseMenu : MonoBehaviour
         isPaused = false;
     }
 
-    public void Options()
-    {
-        pauseMenu.SetActive(false);
-        optionsMenu.SetActive(true);
-    }
-
-    public void Back()
-    {
-        pauseMenu.SetActive(true);
-        optionsMenu.SetActive(false);
-    }
-
     public void Quit()
     {
         Application.Quit();
-    }
-
-    public void Menu()
-    {
-        SceneManager.LoadScene("Menuscherm");
-    }
-
-    public void Next()
-    {
-        SceneManager.LoadScene("level1");
-    }
-
-    public void RestartTutorial()
-    {
-        SceneManager.LoadScene("Game");
-    }
-
-    public void RestartMain()
-    {
-        SceneManager.LoadScene("level1");
     }
 }

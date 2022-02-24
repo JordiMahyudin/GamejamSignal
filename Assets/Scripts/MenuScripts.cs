@@ -22,7 +22,7 @@ public class MenuScripts : MonoBehaviour
     //when start is pressed this will send the user to the next level or game
     public void Play()
     {
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene("GameScene");
     }
 
     public void Quit()
